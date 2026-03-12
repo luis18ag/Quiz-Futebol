@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 3</title>
+    <link rel="stylesheet" href="questoesstyle.css">
+    <script>
+        var acertos = sessionStorage.getItem("acertos") ;
+        var acertosTotal = 0;
+        var tempo = 0;
+    function quiz(num){
+        
+        switch(num){
+          case "1":
+            alert("Resposta correta!");
+             acertosTotal = parseInt(acertos) + 1;
+             acertos = acertosTotal;
+             sessionStorage.setItem("acertos", acertos);
+            break;
+            default:
+            alert("Resposta incorreta!");
+           
+        }
+        
+        window.location.href='questao4.html';
+    }
+    function formatarTempo(tempo) {
+        let horas = Math.floor(tempo / 3600);
+        let minutos = Math.floor((tempo % 3600) / 60);
+        let segundos = tempo % 60;
+        return `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+        }
+
+        function Cronometro() {
+          tempo++;
+          document.getElementById("cronometro").innerText = formatarTempo(tempo);
+
+           if(tempo>=61){
+            alert("O tempo acabou!"); 
+            tempo = 0;
+             sessionStorage.setItem("acertos", acertos);
+            window.location.href = 'questao4.html';
+        }
+
+        }
+        setInterval(Cronometro, 1000);
+</script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="2"><h1>Questão 3</h1></td>
+        </tr>
+        <tr>
+            <td colspan="2"><p>Qual clube é conhecido como “Los Blancos”?</p></td>
+        </tr>
+        <tr>
+            <td id="1" onclick="quiz('1')">A) Real Madrid </td>
+            <td id="2" onclick="quiz('2')">B) Atlético de Madrid</td>
+        </tr>
+        <tr>
+            <td id="3" onclick="quiz('3')">C) Sevilla FC</td>
+            <td id="4" onclick="quiz('4')">D) Barcelona</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p id="cronometro">00:00:00</p>
+            </td>
+    </table>
+</body>
+</html>
+    <!--<h1>Questão 3</h1>
+    <p>Qual clube é conhecido como “Los Blancos”?</p>
+    <button onclick="window.location.href='questao4.html'">A) Barcelona</button>
+    <button onclick="window.location.href='questao4.html'">B) Atlético de Madrid</button>
+    <button onclick="window.location.href='questao4.html'">C) Sevilla FC</button>
+    <button onclick="window.location.href='questao4.html'">D) Real Madrid </button>-->

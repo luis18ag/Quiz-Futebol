@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 5</title>
+    <link rel="stylesheet" href="questoesstyle.css">
+    <script>
+        var acertos = sessionStorage.getItem("acertos") ;
+        var acertosTotal = 0;  
+        var tempo = 0;
+    function quiz(num){
+        switch(num){
+          case "1":
+            alert("Resposta correta!");
+             acertosTotal = parseInt(acertos) + 1;
+            acertos = acertosTotal;
+             sessionStorage.setItem("acertos", acertos);
+            break;
+        default:
+            alert("Resposta incorreta!");
+            
+        }
+        
+        window.location.href='questao6.html';
+    }
+
+    function formatarTempo(tempo) {
+        let horas = Math.floor(tempo / 3600);
+        let minutos = Math.floor((tempo % 3600) / 60);
+        let segundos = tempo % 60;
+        return `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+        }
+
+        function Cronometro() {
+          tempo++;
+          document.getElementById("cronometro").innerText = formatarTempo(tempo);
+
+           if(tempo>=61){
+            alert("O tempo acabou!"); 
+            tempo = 0;
+             sessionStorage.setItem("acertos", acertos);
+            window.location.href = 'questao6.html';
+        }
+
+        }
+        setInterval(Cronometro, 1000);
+</script>
+</head>
+<body>
+<table>
+        <tr>
+            <td colspan="2"><h1>Questão 5</h1></td>
+        </tr>
+        <tr>
+            <td colspan="2"><p>Em uma cobrança de pênalti, o goleiro deve estar:</p></td>
+        </tr>
+        <tr>
+            <td id="1" onclick="quiz('1')">A) Deve ter pelo menos um pé tocando ou alinhado à linha do gol no momento em que a bola é chutada</td>
+            <td id="2" onclick="quiz('2')">B) Pode estar com os dois pés à frente da linha se não se adiantar antes do apito</td>
+        </tr>
+        <tr>
+            <td id="3" onclick="quiz('3')">C) Deve manter os dois pés completamente sobre a linha do gol até o chute</td>
+            <td id="4" onclick="quiz('4')">D) Pode se movimentar livremente desde que permaneça dentro da pequena área </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p id="cronometro">00:00:00</p>
+            </td>
+    </table>
+</body>
+</html>
+
+    <!--<h1>Questão 5</h1>
+    <p>Em uma cobrança de pênalti, o goleiro deve estar:</p>
+    <button onclick="window.location.href='questao6.html'">A) Deve manter os dois pés completamente sobre a linha do gol até o chute</button>
+    <button onclick="window.location.href='questao6.html'">B) Pode estar com os dois pés à frente da linha se não se adiantar antes do apito</button>
+    <button onclick="window.location.href='questao6.html'">C) Deve ter pelo menos um pé tocando ou alinhado à linha do gol no momento em que a bola é chutada</button>
+    <button onclick="window.location.href='questao6.html'">D) Pode se movimentar livremente desde que permaneça dentro da pequena área </button> -->

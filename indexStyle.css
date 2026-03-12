@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+    /* centralização */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* fundo gramado */
+    background: repeating-linear-gradient(
+        90deg,
+        #2e7d32,
+        #2e7d32 40px,
+        #388e3c 40px,
+        #388e3c 80px
+    );
+}
+
+.container {
+    max-width: 600px;
+    padding: 50px;
+    text-align: center;
+
+    background: rgba(0,0,0,0.75);
+    border: 4px solid white;
+    border-radius: 12px;
+
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+/* titulo estilo esportivo */
+h1 {
+    color: white;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h3 {
+    color: #eee;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #ddd;
+    margin-bottom: 30px;
+}
+
+/* botão estilo futebol */
+button {
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #1b5e20;
+    border: 2px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #2e7d32;
+    transform: scale(1.05);
+}
+
+/* container estilo placar */

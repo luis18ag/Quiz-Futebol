@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 9</title>
+    <link rel="stylesheet" href="questoesstyle.css">
+    <script>
+         var acertos = sessionStorage.getItem("acertos");
+         var acertosTotal = 0;
+         var tempo = 0;
+    function quiz(num){
+       
+        switch(num){
+          case "1":
+            alert("Resposta correta!");
+                acertosTotal = parseInt(acertos) + 1;
+                acertos = acertosTotal;
+              sessionStorage.setItem("acertos", acertos);
+            break;
+        default:
+            alert("Resposta incorreta!");   
+        }
+       
+        window.location.href='questao10.html';
+    }
+
+    function formatarTempo(tempo) {
+        let horas = Math.floor(tempo / 3600);
+        let minutos = Math.floor((tempo % 3600) / 60);
+        let segundos = tempo % 60;
+        return `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+        }
+
+        function Cronometro() {
+          tempo++;
+          document.getElementById("cronometro").innerText = formatarTempo(tempo);
+
+           if(tempo>=61){
+            alert("O tempo acabou!"); 
+            tempo = 0;
+             sessionStorage.setItem("acertos", acertos);
+            window.location.href = 'questao7.html';
+        }
+
+        }
+        setInterval(Cronometro, 1000);
+</script>
+</head>
+<body>
+   <table>
+        <tr>
+            <td colspan="2"><h1>Questão 9</h1></td>
+        </tr>
+        <tr>
+            <td colspan="2"><p>Qual clube europeu conquistou a tríplice coroa (Liga dos Campeões, Campeonato Nacional e Copa nacional) pela primeira vez na história do futebol europeu?</p></td>
+        </tr>
+        <tr>
+            <td id="1" onclick="quiz('1')">A)  Ajax</td>
+            <td id="2" onclick="quiz('2')">B) Real Madrid</td>
+        </tr>
+        <tr>
+            <td id="3" onclick="quiz('3')">C) Bayern de Munique</td>
+            <td id="4" onclick="quiz('4')">D) Barcelona</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p id="cronometro">00:00:00</p>
+            </td>
+    </table>
+</body>
+</html>
+
+ <!--<h1>Questão 6</h1>
+    <p>Quantos árbitros assistentes (bandeirinhas) atuam normalmente em uma partida oficial?</p>
+    <button onclick="window.location.href='questao7.html'">A) 1</button>
+    <button onclick="window.location.href='questao7.html'">B) 2</button>
+    <button onclick="window.location.href='questao7.html'">C) 3</button>
+    <button onclick="window.location.href='questao7.html'">D) 4</button> -->

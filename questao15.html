@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 15</title>
+    <link rel="stylesheet" href="questoesstyle.css">
+    <script>
+        var acertos = sessionStorage.getItem("acertos") ;
+        var acertosTotal = 0;
+        var tempo = 0;
+    function quiz(num){
+        switch(num){
+          case "2":
+            alert("Resposta correta!");
+                acertosTotal = parseInt(acertos) + 1;
+                acertos = acertosTotal;
+            sessionStorage.setItem("acertos", acertos);
+            break;
+        default:
+            alert("Resposta incorreta!");
+            
+        }
+        
+        window.location.href='fim.html';
+    }
+
+    function formatarTempo(tempo) {
+        let horas = Math.floor(tempo / 3600);
+        let minutos = Math.floor((tempo % 3600) / 60);
+        let segundos = tempo % 60;
+        return `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+        }
+
+        function Cronometro() {
+          tempo++;
+          document.getElementById("cronometro").innerText = formatarTempo(tempo);
+
+           if(tempo>=61){
+            alert("O tempo acabou!"); 
+            tempo = 0;
+             sessionStorage.setItem("acertos", acertos);
+            window.location.href = 'fim.html';
+        }
+    }
+        setInterval(Cronometro, 1000);
+</script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="2"><h1>Questão 15</h1></td>
+        </tr>
+        <tr>
+            <td colspan="2"><p>Pierluigi Collina, considerado um dos maiores árbitros da história, ficou famoso por seu olhar intenso e seu estilo icônico. Qual era sua nacionalidade?</p></td>
+        </tr>
+        <tr>
+            <td id="1" onclick="quiz('1')">A) Espanhola </td>
+            <td id="2" onclick="quiz('2')">B) Italiana</td>
+        </tr>
+        <tr>
+            <td id="3" onclick="quiz('3')">C) Alemã</td>
+            <td id="4" onclick="quiz('4')">D) Inglesa</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p id="cronometro">00:00:00</p>
+            </td>
+    </table>
+</body>
+</html>
+    <!--<h1>Questão 7</h1>
+    <p>Quantas substituições são permitidas normalmente em competições oficiais atualmente?</p>
+    <button onclick="window.location.href='fim.html'">A) 3 </button>
+    <button onclick="window.location.href='fim.html'">B) 4</button>
+    <button onclick="window.location.href='fim.html'">C) 5</button>
+    <button onclick="window.location.href='fim.html'">D) 7</button>  -->

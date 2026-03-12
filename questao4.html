@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 4</title>
+    <link rel="stylesheet" href="questoesstyle.css">
+    <script>
+        var acertos = sessionStorage.getItem("acertos");
+        var acertosTotal = 0;
+        var tempo = 0;
+    function quiz(num){
+       
+        switch(num){
+          case "3":
+            alert("Resposta correta!");
+             acertosTotal = parseInt(acertos) + 1; 
+                acertos = acertosTotal;
+             sessionStorage.setItem("acertos", acertos);
+            break;
+        default:
+            alert("Resposta incorreta!");
+
+        }
+        
+        window.location.href='questao5.html';
+    }
+
+    function formatarTempo(tempo) {
+        let horas = Math.floor(tempo / 3600);
+        let minutos = Math.floor((tempo % 3600) / 60);
+        let segundos = tempo % 60;
+        return `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+        }
+
+        function Cronometro() {
+          tempo++;
+          document.getElementById("cronometro").innerText = formatarTempo(tempo);
+
+           if(tempo>=61){
+            alert("O tempo acabou!"); 
+            tempo = 0;
+             sessionStorage.setItem("acertos", acertos);
+            window.location.href = 'questao5.html';
+        }
+
+        }
+        setInterval(Cronometro, 1000);
+</script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="2"><h1>Questão 4</h1></td>
+        </tr>
+        <tr>
+            <td colspan="2"><p>Se, durante o jogo, uma das equipes ficar com menos de 7 jogadores em campo, o que deve acontecer?</p></td>
+        </tr>
+        <tr>
+            <td id="1" onclick="quiz('1')">A) O jogo continua normalmente</td>
+            <td id="2" onclick="quiz('2')">B) O árbitro registra a situação e permite que o jogo prossiga até o intervalo, aguardando decisões da comissão disciplinar.</td>
+        </tr>
+        <tr>
+            <td id="3" onclick="quiz('3')">C) O árbitro encerra a partida, declarando W.O., e a equipe infratora perde por 3x0, independentemente do resultado.</td>
+            <td id="4" onclick="quiz('4')">D) A equipe pode completar com jogadores do banco além do limite </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p id="cronometro">00:00:00</p>
+            </td>
+    </table>
+</body>
+</html>
+
+<!--<h1>Questão 4</h1>
+    <p>Se, durante o jogo, uma das equipes ficar com menos de 7 jogadores em campo, o que deve acontecer?</p>
+    <button onclick="window.location.href='questao5.html'">A) O jogo continua normalmente</button>
+    <button onclick="window.location.href='questao5.html'">B) O árbitro dá vitória automática ao adversário</button>
+    <button onclick="window.location.href='questao5.html'">C) A partida deve ser encerrada</button>
+    <button onclick="window.location.href='questao5.html'">D) A equipe pode completar com jogadores do banco além do limite </button>-->
